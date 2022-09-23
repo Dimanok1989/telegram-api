@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\AllData;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -8,6 +8,27 @@ use Illuminate\Database\Eloquent\Model;
 class Gibdd2Full extends Model
 {
     use HasFactory;
+
+    /**
+     * The database connection that should be used by the model.
+     *
+     * @var string
+     */
+    protected $connection = "alldata";
+
+    /**
+     * The table associated with the model.
+     *
+     * @var string
+     */
+    protected $table = "gibdd2_full";
+
+    /**
+     * Indicates if the model should be timestamped.
+     *
+     * @var bool
+     */
+    public $timestamps = false;
 
     /**
      * The attributes that are mass assignable.
@@ -31,11 +52,4 @@ class Gibdd2Full extends Model
         'gibdd2_name',
         '_gibdd2_seq_pn_count',
     ];
-
-    /**
-     * Table name
-     * 
-     * @var string
-     */
-    protected $table = "gibdd2_full";
 }
