@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\WebhookController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -18,10 +19,7 @@ use Illuminate\Support\Facades\Route;
 //     return $request->user();
 // });
 
-Route::group([
-    'prefix' => '{token}',
-    'middleware' => \App\Http\Middleware\CheckAccessData::class,
-], function () {
+Route::post('{token}/webhook', [WebhookController::class, "input"]);
 
-    Route::match(['post', 'get'], 'getFromCarNumber', [\App\Http\Controllers\Cars\Numbers::class, "getFromCarNumber"]);
+Route::group(['prefix' => '{token}', 'middleware' => \App\Http\Middleware\CheckAccessData::class], function () {
 });
